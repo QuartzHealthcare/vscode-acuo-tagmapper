@@ -1,0 +1,212 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "TagMapper",
+  "scopeName": "source.tagmapper",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#reserved-names" },
+    { "include": "#status-values" },
+    { "include": "#numeric-literals" },
+    { "include": "#column-names" },
+    { "include": "#tag-aliases" },
+    { "include": "#control-keywords" },
+    { "include": "#sequence-commands" },
+    { "include": "#mpi-commands" },
+    { "include": "#database-commands" },
+    { "include": "#extension-commands" },
+    { "include": "#tag-modification-commands" },
+    { "include": "#configuration-commands" },
+    { "include": "#process-control" },
+    { "include": "#condition-operators" },
+    { "include": "#setting-values" },
+    { "include": "#dicom-tags" },
+    { "include": "#strings" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.tagmapper",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.line.double-dash.tagmapper",
+          "match": "--.*$"
+        },
+        {
+          "name": "comment.block.tagmapper",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "control-keywords": {
+      "patterns": [
+        {
+          "name": "invalid.illegal.fail.tagmapper",
+          "match": "(?i)\\bfail\\b"
+        },
+        {
+          "name": "keyword.control.tagmapper",
+          "match": "(?i)\\b(IF|THEN|ELSE|ENDIF|ORIF|ANDIF|STOP|REPEAT)\\b"
+        }
+      ]
+    },
+    "tag-modification-commands": {
+      "patterns": [
+        {
+          "name": "keyword.other.tagmapper",
+          "match": "(?i)\\b(add|append|case|clear|create|delete|leave|prepend|process|replace|replacetext|sub|trim)\\b"
+        },
+        {
+          "name": "keyword.other.conversion.tagmapper",
+          "match": "(?i)\\b(convertIntToString|convertStringToInt)\\b"
+        },
+        {
+          "name": "keyword.other.tagmapper",
+          "match": "(?i)\\b(removeInvalidChars|tagAlias)\\b"
+        }
+      ]
+    },
+    "sequence-commands": {
+      "patterns": [
+        {
+          "name": "keyword.other.sequence.tagmapper",
+          "match": "(?i)\\b(SEQ_Begin|SEQ_End|SEQ_BeginItem|SEQ_EndItem|SEQ_Open|SEQ_Close|SEQ_OpenItem|SEQ_CloseItem)\\b"
+        }
+      ]
+    },
+    "mpi-commands": {
+      "patterns": [
+        {
+          "name": "keyword.other.mpi.tagmapper",
+          "match": "(?i)\\b(replacePIDUsingPIX|addDemographic|getReturnedDemographic|issuePdqQuery)\\b"
+        }
+      ]
+    },
+    "database-commands": {
+      "patterns": [
+        {
+          "name": "keyword.other.database.tagmapper",
+          "match": "(?i)\\b(modifyTable|setColumn|where|addRow|deleteRow|updateRow)\\b"
+        }
+      ]
+    },
+    "extension-commands": {
+      "patterns": [
+        {
+          "name": "keyword.other.extension.tagmapper",
+          "match": "(?i)\\b(AddPassedValue|GetReturnValue|CALL_TMExtension)\\b"
+        }
+      ]
+    },
+    "configuration-commands": {
+      "patterns": [
+        {
+          "name": "keyword.other.config.tagmapper",
+          "match": "(?i)\\b(set|readfile)\\b"
+        },
+        {
+          "name": "variable.parameter.config.tagmapper",
+          "match": "(?i)\\b(AllowBlankTags|AuditLogging|CacheTags|CacheTagsLife|CreateAsReplace|CreateOriginalAttributesSequence|Dbhit|Dbmiss|DbTable|EnableAE|FailOnError|IgnorePixNotFoundReturn|LogAge|LogPath|LogSize|OriginalAttributesReasonForChange|PdqAccess|PdqFile|PixAccess|PixCache|PixFile|SourceAssigningAuthority|SourceDomainID|SourceDomainName|SqlDataCache|SqlDataCacheLife|TargetAssigningAuthority|TargetDomainID|TargetDomainName|TMExtCache|TMExtDll|TMExtInitString|TTL|validateLength|Verbose)\\b"
+        }
+      ]
+    },
+    "process-control": {
+      "patterns": [
+        {
+          "name": "keyword.other.control.tagmapper",
+          "match": "(?i)\\b(report|StopHexTrace|DisableCommandWarningEvent)\\b"
+        }
+      ]
+    },
+    "status-values": {
+      "patterns": [
+        {
+          "name": "constant.language.status.tagmapper",
+          "match": "<(EXISTS|NULL|CONFORMS|NUMERIC)>"
+        }
+      ]
+    },
+    "reserved-names": {
+      "patterns": [
+        {
+          "name": "variable.other.constant.tagmapper",
+          "match": "%(CURRENT_TIME|DEST_AE_NAME|NEW_STUDY_UID|NEW_SERIES_UID|NEW_IMAGE_UID|NUMBER_OF_PDQ_RESULTS|ROWCOUNT|SERVER_NAME|SOURCE_AE_NAME|SOURCE_IMPLEMENTATION_NAME|SOURCE_IMPLEMENTATION_UID|SOURCE_IP_ADDRESS|SOURCE_SYSTEM_NAME|TRANSFER_SYNTAX|DICOM_CMD|DOMAIN_NAME|DOMAIN_ID|DOMAIN_ASSIGNING_AUTHORITY|TMEXTENSIONSTATUS)%"
+        }
+      ]
+    },
+    "condition-operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.comparison.tagmapper",
+          "match": "(?i)\\b(begins|ends|contains|within|after|before|startsWith|endsWith)\\b"
+        },
+        {
+          "name": "support.function.length.tagmapper",
+          "match": "(?i)\\bLength\\s*\\(\\s*\\d+\\s*\\)"
+        }
+      ]
+    },
+    "setting-values": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean.tagmapper",
+          "match": "(?i)\\b(True|False)\\b"
+        },
+        {
+          "name": "constant.language.enum.tagmapper",
+          "match": "(?i)\\b(Single|Any|Log|Ignore|Warn|Truncate|Error|COERCE|CORRECT|PATIENT|STUDY|SERIES|upper|lower|capfirst|first|last|None)\\b"
+        }
+      ]
+    },
+    "dicom-tags": {
+      "patterns": [
+        {
+          "name": "constant.numeric.dicom-tag.tagmapper",
+          "match": "\\b[0-9A-Fa-f]{4},[0-9A-Fa-f]{4}\\b"
+        },
+        {
+          "name": "constant.numeric.dicom-tag-unframed.tagmapper",
+          "match": "\\b[0-9A-Fa-f]{8}\\b"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.tagmapper",
+          "match": "\"[^\"]*\""
+        }
+      ]
+    },
+    "numeric-literals": {
+      "patterns": [
+        {
+          "name": "constant.numeric.hash.tagmapper",
+          "match": "#-?(?:0x)?[0-9A-Fa-f.]+#"
+        }
+      ]
+    },
+    "column-names": {
+      "patterns": [
+        {
+          "name": "variable.parameter.column.tagmapper",
+          "match": "\\([A-Za-z_][A-Za-z0-9_ ]*\\)"
+        }
+      ]
+    },
+    "tag-aliases": {
+      "patterns": [
+        {
+          "name": "entity.name.tag.alias.tagmapper",
+          "match": "@[A-Za-z_][A-Za-z0-9_]*"
+        },
+        {
+          "name": "entity.name.tag.alias.builtin.tagmapper",
+          "match": "(?i)\\bBeginItem\\b"
+        }
+      ]
+    }
+  }
+}

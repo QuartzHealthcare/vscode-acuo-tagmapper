@@ -1,0 +1,43 @@
+{
+  "name": "tagmapper",
+  "displayName": "TagMapper Syntax",
+  "description": "Syntax highlighting for Hyland Acuo TagMapper scripts",
+  "version": "1.0.0",
+  "publisher": "quartz-healthcare",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quartz-healthcare/vscode-acuo-tagmapper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/quartz-healthcare/vscode-acuo-tagmapper/issues"
+  },
+  "homepage": "https://github.com/quartz-healthcare/vscode-acuo-tagmapper#readme",
+  "keywords": [
+    "tagmapper",
+    "acuo",
+    "hyland",
+    "dicom",
+    "medical imaging",
+    "syntax highlighting"
+  ],
+  "engines": {
+    "vscode": "^1.50.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "tagmapper",
+      "aliases": ["TagMapper", "tagmapper"],
+      "extensions": [".txt"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "tagmapper",
+      "scopeName": "source.tagmapper",
+      "path": "./syntaxes/tagmapper.tmLanguage.json"
+    }]
+  }
+}
