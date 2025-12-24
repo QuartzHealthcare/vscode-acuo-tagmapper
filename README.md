@@ -110,7 +110,7 @@ This will create a `tagmapper-x.x.x.vsix` file in the current directory.
 
 ### From GitHub Release (Recommended)
 
-1. Download the latest `.vsix` file from [Releases](https://github.com/quartz-healthcare/vscode-acuo-tagmapper/releases)
+1. Download the latest `.vsix` file from [Releases](https://github.com/QuartzHealthcare/vscode-acuo-tagmapper/releases)
 2. In VS Code, press `Cmd+Shift+P` (macOS) or `Ctrl+Shift+P` (Windows/Linux)
 3. Type "Extensions: Install from VSIX..."
 4. Select the downloaded `.vsix` file
@@ -118,7 +118,7 @@ This will create a `tagmapper-x.x.x.vsix` file in the current directory.
 ### Build from Source
 
 ```bash
-git clone https://github.com/quartz-healthcare/vscode-acuo-tagmapper.git
+git clone https://github.com/QuartzHealthcare/vscode-acuo-tagmapper.git
 cd vscode-acuo-tagmapper
 npx @vscode/vsce package
 code --install-extension tagmapper-1.0.0.vsix
